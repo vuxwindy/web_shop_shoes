@@ -1,0 +1,655 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th4 08, 2025 lúc 07:29 PM
+-- Phiên bản máy phục vụ: 10.4.32-MariaDB
+-- Phiên bản PHP: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Cơ sở dữ liệu: `project1`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `admins`
+--
+
+CREATE TABLE `admins` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `admins`
+--
+
+INSERT INTO `admins` (`id`, `name`, `email`, `password`, `created_at`, `updated_at`) VALUES
+(5, 'wux nam', 'adnam@gmail.com', '$2y$10$yV8HPs0.vMgv/LhvEpVFKuSECFrP6kq4ZgeDP4eNbZi.TwsQ0uxV6', '2025-02-18 00:42:30', '2025-02-18 00:42:30'),
+(6, 'Nike xanh lá', 'adxanh@gmail.com', '$2y$10$9wVui6.KAyeJHtzzA4LZieYRnrgOWd56fXl.OHwP4fiGWdyxiNPc2', '2025-02-18 03:07:02', '2025-02-18 03:07:02');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `brands`
+--
+
+CREATE TABLE `brands` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name_brand` varchar(150) NOT NULL,
+  `image_brand` varchar(150) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `brands`
+--
+
+INSERT INTO `brands` (`id`, `name_brand`, `image_brand`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Nike', 'nike', 'Just do it', '2025-02-16 20:50:46', '2025-02-16 20:50:46'),
+(2, 'Adidas', 'adidas', 'Impossible is nothing', '2025-02-16 20:50:46', '2025-02-16 20:50:46'),
+(3, 'Vans', 'vans', 'Endorsed by No One', '2025-02-16 20:50:46', '2025-02-16 20:50:46');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `cart_item`
+--
+
+CREATE TABLE `cart_item` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `shopping_session_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `categories`
+--
+-- Error reading structure for table project1.categories: #1932 - Table 'project1.categories' doesn't exist in engine
+-- Error reading data for table project1.categories: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `project1`.`categories`' at line 1
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2022_06_03_214801_create_brands_table', 1),
+(6, '2022_06_03_215026_create_products_table', 1),
+(7, '2022_06_03_215105_add_column_users', 1),
+(8, '2022_06_03_215152_create_shopping_session_table', 1),
+(9, '2022_06_03_215248_create_cart_item_table', 1),
+(10, '2022_06_03_215407_create_order_details_table', 1),
+(11, '2022_06_03_215442_create_order_items_table', 1),
+(12, '2022_06_03_215550_add_column_products', 1),
+(13, '2025_02_16_073400_create_subscribers_table', 2),
+(14, '2025_02_18_002648_create_admins_table', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `total` decimal(8,2) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `order_items`
+--
+
+CREATE TABLE `order_items` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `product_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `password_resets`
+--
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `personal_access_tokens`
+--
+
+CREATE TABLE `personal_access_tokens` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `token` varchar(64) NOT NULL,
+  `abilities` text DEFAULT NULL,
+  `last_used_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `products`
+--
+
+CREATE TABLE `products` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(150) NOT NULL,
+  `main_image` varchar(150) NOT NULL,
+  `price` double NOT NULL,
+  `description` longtext NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 1,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `brand_id` bigint(20) UNSIGNED NOT NULL,
+  `img_sp` varchar(150) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `main_image`, `price`, `description`, `status`, `created_at`, `updated_at`, `brand_id`, `img_sp`) VALUES
+(2, 'gK3m9hOApLOBHiO', 'img_vans_(1).jpg', 5600, 'Distinctio qui voluptatem non odit et quia omnis. Officiis omnis et nihil quisquam.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 3, 'img_vans_(2).jpg'),
+(3, 'aYgkfXiqK2gepSe', 'img_vans_(3).jpg', 4603, 'Quaerat ea est possimus dolor quis blanditiis. Explicabo doloribus doloremque nulla quia vel in ea.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 3, 'img_vans_(4).jpg'),
+(4, 'yWn7fVgtM3tpXE8', 'img_vans_(5).jpg', 5563, 'Magni quis nihil aut et molestias. Eum dolorem enim nemo ipsam.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 3, 'img_vans_(6).jpg'),
+(5, 'tC0iGUqKxxncOZX', 'img_vans_(7).jpg', 4249, 'Quidem expedita aut adipisci eos molestiae. Vitae corporis quo non dolores.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 3, 'img_vans_(8).jpg'),
+(6, 'QwW3NznMMlPeXvi', 'img_vans_(9).jpg', 5467, 'Odio dignissimos in et at eos. Vel ipsa et numquam quo rem fugit neque.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 3, 'img_vans_(10).jpg'),
+(7, 'BEqlbVXKKNhIMIu', 'img_vans_(11).jpg', 5576, 'Nulla autem fugit voluptatem dolorem eaque voluptas. Ipsa est in ducimus aut et dolor.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 3, 'img_vans_(12).jpg'),
+(8, 'lg7qzI89jCen0YF', 'img_vans_(13).jpg', 5584, 'Eveniet magni quo quod. Et quisquam minima quisquam nisi modi est.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 3, 'img_vans_(14).jpg'),
+(9, '6BwXIlo4mWMGWN1', 'img_adidas_(1).jpg', 5610, 'Temporibus asperiores placeat et enim quae. Voluptatem ut incidunt tempore id.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 2, 'img_adidas_(2).jpg'),
+(10, 'mViyMJo7Y2ZeZzZ', 'img_adidas_(3).jpg', 4396, 'Totam expedita hic vitae excepturi cum culpa. Dignissimos delectus quos rerum et cum harum.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 2, 'img_adidas_(4).jpg'),
+(11, 'DELEgMuRKNweW75', 'img_adidas_(5).jpg', 3500, 'Minus ducimus eos consequatur ipsa officiis. Maiores repellendus totam praesentium error sunt.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 2, 'img_adidas_(6).jpg'),
+(12, 'QA5CFbN5d6L6eHu', 'img_adidas_(7).jpg', 3497, 'Ipsam sint eum ullam maxime dolore. Eveniet iure rerum dolores.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 2, 'img_adidas_(8).jpg'),
+(13, 'FQKE7VPvA0brp3B', 'img_adidas_(9).jpg', 4274, 'Et qui velit quo dolorem deleniti. Maxime aperiam ea autem. Quidem non eius saepe.', 1, '2025-02-16 20:51:52', '2025-02-16 20:51:52', 2, 'img_adidas_(10).jpg'),
+(14, 'C9LE2WORVbC0dPS', 'img_adidas_(11).jpg', 4309, 'Sunt commodi expedita quo repudiandae fugiat quae. Quo et eius libero delectus unde.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(12).jpg'),
+(15, '5ewzhIj8mAkPsJ8', 'img_adidas_(13).jpg', 5020, 'Iste suscipit fugit suscipit. Et laborum consequatur porro qui omnis molestiae.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(14).jpg'),
+(16, 'C7ifqtwMKY517uy', 'img_adidas_(15).jpg', 4267, 'Nam dolorem tempora omnis quam. Quia minus dolorem qui. Accusamus iste consequatur excepturi magni.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(16).jpg'),
+(17, '4LljgVSdsKJVLFD', 'img_adidas_(17).jpg', 5005, 'Accusantium tenetur distinctio alias ullam. Dolores illo ut eos excepturi doloremque.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(18).jpg'),
+(18, 'q6b1Wa4Te3TYAtD', 'img_adidas_(19).jpg', 3958, 'Temporibus in alias ut ex molestiae. Mollitia aperiam assumenda corrupti dolorem blanditiis.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(20).jpg'),
+(19, 'tO1I93RosURQkaa', 'img_adidas_(21).jpg', 3469, 'Accusamus hic earum eligendi eum quasi natus. Facilis magnam nobis et nostrum culpa.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(22).jpg'),
+(20, 'ShuQoZKTpulDxTs', 'img_adidas_(23).jpg', 5674, 'Omnis non quos quas. Facilis harum dolores est aliquam vitae sint ut. Sunt sed aut minus.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(24).jpg'),
+(21, 'QhP97Rv8MRdtkAi', 'img_adidas_(25).jpg', 4995, 'Fuga corporis quia facere ex est et. Deserunt aperiam non deleniti consequatur est sed.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(26).jpg'),
+(22, 'b4zxTQUQBQSptiX', 'img_adidas_(27).jpg', 5646, 'Nam repellendus ad quam ut nam voluptatibus est. Occaecati ex voluptatem totam rerum sit.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(28).jpg'),
+(23, 'ujqkXTlzuvIf6c5', 'img_adidas_(29).jpg', 5529, 'Soluta et sequi et ducimus ad. Aut saepe unde ipsam quo iure. Sed ut aut hic ut quia qui ut.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(30).jpg'),
+(24, 'BDI5NxpEemhA9fG', 'img_adidas_(31).jpg', 5296, 'Est sit vero expedita laborum. Eos commodi laudantium saepe aut.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(32).jpg'),
+(25, 'lXDdMPpTXFutyaZ', 'img_adidas_(33).jpg', 3066, 'Quos rerum eos dolorum quia similique labore enim. Aut eveniet soluta quos.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(34).jpg'),
+(26, 'b2BbpLh1DMnEiMs', 'img_adidas_(35).jpg', 5407, 'Quia culpa necessitatibus et. Modi autem aperiam ducimus consequatur culpa modi.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(36).jpg'),
+(27, 'wGnX3LuPRNAmCZm', 'img_adidas_(37).jpg', 3632, 'Tempora perferendis a adipisci vel dolorum. Deserunt nostrum voluptatem doloribus aut.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(38).jpg'),
+(28, '4id7dVkBwJn3lQU', 'img_adidas_(39).jpg', 4923, 'Sunt alias dolor rem sit hic enim inventore qui. Nisi nulla ea fugit quod recusandae.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(40).jpg'),
+(29, 'ZCdxI1YmJK89u4v', 'img_adidas_(41).jpg', 4668, 'Voluptate quia maiores odit. Et voluptates laborum nihil aut.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(42).jpg'),
+(30, '20J8tEJor02fz3x', 'img_adidas_(43).jpg', 3987, 'Quis hic quia maiores autem laborum non aut quia. Placeat occaecati facere sit atque est quia.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(44).jpg'),
+(31, 'w6zWLnZJgguYnWN', 'img_adidas_(45).jpg', 3943, 'Vitae rerum reprehenderit enim quae rem. Doloremque nobis sequi officia non harum.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(46).jpg'),
+(32, 'W4icAinap89RyqE', 'img_adidas_(47).jpg', 3448, 'Minima aut sunt iure autem. Sit est eum aut ut. Et qui laborum qui aut.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(48).jpg'),
+(33, '7esol2OjmJ0JUA5', 'img_adidas_(49).jpg', 4811, 'Et optio non sunt quam. Voluptatem fugiat sit eveniet quidem.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(50).jpg'),
+(34, 'DkCuYlQne6voHyK', 'img_adidas_(51).jpg', 5700, 'Sapiente reiciendis nostrum veritatis facere et. Aperiam aperiam non sunt.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(52).jpg'),
+(35, 'NUPACOnw7VcSM69', 'img_adidas_(53).jpg', 4415, 'Ab a ex earum pariatur a. Ut sequi earum iste eveniet aliquid. Illum magni sint quis.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 2, 'img_adidas_(54).jpg'),
+(36, '4scabcQlWT4bneP', 'img_nike_(1).jpg', 5577, 'Aliquam nulla blanditiis sit unde praesentium atque. Aspernatur aspernatur illo qui impedit.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(2).jpg'),
+(37, 'KtmJalxXtd4J7If', 'img_nike_(3).jpg', 3519, 'Eum omnis animi nostrum. Dolorem fugiat eos iusto. Atque sequi et sed sint ea id.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(4).jpg'),
+(38, '5hRwmjgE7d5sroB', 'img_nike_(5).jpg', 3304, 'Vel quod voluptas expedita enim facere. Cum quis doloribus quasi velit voluptatem accusantium.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(6).jpg'),
+(39, 'wP43porf4CnwTpv', 'img_nike_(7).jpg', 5135, 'Cumque autem eligendi est sint optio. Dolores dolor qui quia et non repellat accusantium.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(8).jpg'),
+(40, '16ndXwZeqZbVDpe', 'img_nike_(9).jpg', 3129, 'Quas sit veritatis cumque molestiae modi sit. Quo sed distinctio dolor. Ut et vel quod labore.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(10).jpg'),
+(41, 'BO3KruMzrvvsa9G', 'img_nike_(11).jpg', 4168, 'Illo magni quas officia est. Et aliquid neque consequatur aut nobis.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(12).jpg'),
+(42, 'ekJjpVGz68wlG7B', 'img_nike_(13).jpg', 3026, 'Culpa sint qui nihil nihil. A aut qui modi voluptate. Qui itaque et eum.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(14).jpg'),
+(43, '1SeJE4Qpj6zJbry', 'img_nike_(15).jpg', 4747, 'Sapiente et mollitia cum fugiat quia. Dolorem quis qui enim et.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(16).jpg'),
+(44, '3axC2lvkSGMJCpl', 'img_nike_(17).jpg', 5597, 'Illo excepturi hic accusantium expedita est. Sunt voluptate et quae ut odit id.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(18).jpg'),
+(45, 'jnTEJXCDfXCmyJ1', 'img_nike_(19).jpg', 3802, 'Non at eius quia a ratione quod voluptas. Ab sed impedit qui facilis consequatur rerum.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(20).jpg'),
+(46, 'L5YCL6FtUUxDZdw', 'img_nike_(21).jpg', 4331, 'Aut architecto cum dolor nam est voluptas. Quo soluta ut aut ex. Quos a cum quis minima.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(22).jpg'),
+(47, '4sSg0qjAIxDmjoJ', 'img_nike_(23).jpg', 3005, 'Laudantium natus sit aut facilis sit ut quae. Alias laborum modi officiis quaerat quo esse.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(24).jpg'),
+(48, 'QIzfiQE7DS3JKYh', 'img_nike_(25).jpg', 3498, 'Sunt quia possimus maxime ab. Veniam est blanditiis voluptatem occaecati.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(26).jpg'),
+(49, 'OxpA38pXK9tjcxI', 'img_nike_(27).jpg', 3302, 'Iste placeat qui hic alias amet. Quia in est vitae. Illo neque quasi sit quos.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(28).jpg'),
+(50, '7oLfHWEFkOy5nW7', 'img_nike_(29).jpg', 3631, 'Esse excepturi provident fugit. Architecto sint voluptas reiciendis.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(30).jpg'),
+(51, 'uSvCEIMzymzSISj', 'img_nike_(31).jpg', 5037, 'Voluptatem et asperiores in molestiae quam. Quia ut quisquam quia nemo excepturi aut.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(32).jpg'),
+(52, 'cuMfbUJqGvcuXrO', 'img_nike_(33).jpg', 3533, 'Et et facilis qui ut temporibus autem. Numquam velit quam voluptas et in.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(34).jpg'),
+(53, 'LDjXZKAxp4y9td3', 'img_nike_(35).jpg', 3729, 'Magni vel veritatis rerum eos eveniet. Earum minus sequi consequuntur mollitia maiores dolorem.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(36).jpg'),
+(54, 'q1whwAZDBYmuuJc', 'img_nike_(37).jpg', 5976, 'Minus quod quaerat rem quibusdam adipisci ut aspernatur. Aut ducimus sit reiciendis maxime.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(38).jpg'),
+(55, 'xabGM5XP59JDuPJ', 'img_nike_(39).jpg', 5916, 'Magnam fugiat architecto ex. Sint sint natus sequi.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(40).jpg'),
+(56, 'GWz5Ab32jwYp48I', 'img_nike_(41).jpg', 4704, 'Nam sit aperiam saepe pariatur harum accusamus. Quod porro reprehenderit impedit.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(42).jpg'),
+(57, '4Q8cPrNW1u1uTal', 'img_nike_(43).jpg', 4985, 'Rerum soluta optio iste. Quia enim aut quia voluptates nisi a amet. Quas esse ut quasi.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(44).jpg'),
+(58, 'Vur1GQkyI8ChOeI', 'img_nike_(45).jpg', 4370, 'Laudantium vitae soluta quis id dolore in est quas. Laudantium ut nulla quo cumque ut voluptas aut.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(46).jpg'),
+(59, 'kSiOpC8JlKaccdz', 'img_nike_(47).jpg', 5990, 'Ut provident enim et quas. Eos a qui ipsam aliquid sit exercitationem.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(48).jpg'),
+(60, 'moYkfkNbodLTKeY', 'img_nike_(49).jpg', 3228, 'Maiores consequatur ratione cupiditate non. Fugit nesciunt distinctio nihil illum omnis.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(50).jpg'),
+(61, 'rE7o2wRkNIP4LYx', 'img_nike_(51).jpg', 3961, 'Libero soluta sit provident qui. Molestias soluta voluptas repellat labore.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(52).jpg'),
+(62, '2NWwgllHD5eRuDy', 'img_nike_(53).jpg', 4877, 'Ut labore qui dicta ratione praesentium est. Saepe est ex quidem et.', 1, '2025-02-16 20:51:53', '2025-02-16 20:51:53', 1, 'img_nike_(54).jpg'),
+(63, 'wux nam', '1739828701-product.webp', 999999, 'sản phẩm tuyeeth nhất đến từ chúng tôi', 1, NULL, NULL, 2, '1739828701-product-sp.jpg'),
+(64, 'wux nam', '1739828749-product.webp', 999999, 'sản phẩm tuyeeth nhất đến từ chúng tôi', 1, NULL, NULL, 2, '1739828749-product-sp.jpg'),
+(65, 'wux nam', '1739872841-product.webp', 5484651, 'sản phẩm tuyeeth nhất đến từ chúng tôi', 1, NULL, NULL, 1, '1739872841-product-sp.jpg'),
+(66, 'wux nam', '1739873044-product.webp', 5484651, 'sản phẩm tuyeeth nhất đến từ chúng tôi', 1, NULL, NULL, 1, '1739873044-product-sp.jpg'),
+(67, 'wux nam', '1739873054-product.webp', 5484651, 'sản phẩm tuyeeth nhất đến từ chúng tôi', 1, NULL, NULL, 1, '1739873054-product-sp.jpg'),
+(68, 'wux nam', '1739873058-product.webp', 5484651, 'sản phẩm tuyeeth nhất đến từ chúng tôi', 1, NULL, NULL, 1, '1739873058-product-sp.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `shopping_session`
+--
+
+CREATE TABLE `shopping_session` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL,
+  `total` int(10) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `subscribers`
+--
+
+CREATE TABLE `subscribers` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `role` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `address` varchar(255) NOT NULL,
+  `phone` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role`, `address`, `phone`) VALUES
+(6, 'Dr. Joaquin Murazik', 'flatley.sylvia@gmail.com', '2025-02-16 20:52:18', '$2y$10$JNRnQx3cbQJk4oAfXcjql.n9paH0wipPmfSM96JT2p7dWyNthlo/q', 'cMkKIAb9L2', '2025-02-16 20:52:18', '2025-02-16 20:52:18', 0, '246 Pfannerstill Lodge Apt. 610\nSouth Halle, NH 89296-7279', '0298806927'),
+(7, 'Erika Rodriguez', 'konopelski.duane@gmail.com', '2025-02-16 20:52:18', '$2y$10$Xa7XxEYm9VvITwN8LGrKz.fYnfOJ1Oxz9amdhZqWMUeAjS8NF2nfe', 'AR1eXBkl5E', '2025-02-16 20:52:18', '2025-02-16 20:52:18', 0, '46068 Juanita Radial Suite 211\nNorth Marcellahaven, CT 49391', '0774496840'),
+(8, 'Bart Larson', 'vfunk@gmail.com', '2025-02-16 20:52:18', '$2y$10$psuVOy.ZoqGRRHhhtIryCu3YQOpjRb85hZeV5GnaR.iCwj5RhftWG', 'GErIkbwRvC', '2025-02-16 20:52:18', '2025-02-16 20:52:18', 0, '25592 Danielle Fork\nEast Bette, RI 82542', '0873181389'),
+(9, 'Dr. Jeromy Parker Jr.', 'jbartell@gmail.com', '2025-02-16 20:52:18', '$2y$10$aguro9VdT9YWgsrUVGCBUuEMNSA1B.eCeCivfNwIDmwE8qV3Hesg2', 'gzatKxCkLo', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '990 Cruickshank Wells\nFabianfurt, NC 53318-7120', '0795386732'),
+(10, 'Dr. Glenna Spencer II', 'marcelina.beatty@gmail.com', '2025-02-16 20:52:19', '$2y$10$Y8uTgC9Ph3HVF6r9saoNDeW9A/mb7FoHBfZ6Qa.9clsu9Aozcwdp6', 'UaxOj6IQTp', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '6676 Dario Parks Suite 644\nNew Gayle, WI 29096', '0680107093'),
+(11, 'Kailey Cummerata', 'christ.lemke@gmail.com', '2025-02-16 20:52:19', '$2y$10$sFDsR6MbLgbeGPUxsKKlYudFuMGo37XD4XqUc42GTc5ai16Bqf6jK', 'YBMwxmweKw', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '2160 Koch Keys Suite 582\nManleyfort, NY 33143', '0919740398'),
+(12, 'Miss Marcelina Wilkinson IV', 'hill.mohamed@gmail.com', '2025-02-16 20:52:19', '$2y$10$dDbMaXRvdzVZUyrLboQPseIhdBWMwggyeM8hY730PcUKlZGuwNNPS', 'QdlYPVmA2Y', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '70404 Abernathy Drive\nLangton, VA 74244-9424', '0693842899'),
+(13, 'Dino Orn', 'aylin.hirthe@gmail.com', '2025-02-16 20:52:19', '$2y$10$XFuE7XoFa4pd.qnZsyu46OFtOwl5.8s30NO2xfDeFOvqGBzOuWxLO', 'dVQ1zqLGct', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '56440 Verona Key Apt. 503\nPort Drew, MT 44569-5120', '0795370298'),
+(14, 'Verna Dicki', 'crosenbaum@gmail.com', '2025-02-16 20:52:19', '$2y$10$vxK1guy8QyCEOl7itgJuMuPw3nzYdCp5DFxDEn4F.DMYIByHYAxBS', 'g8iW8w0kZC', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '63531 Dovie Rapids Suite 331\nSamanthaside, OH 22592-3871', '0461927234'),
+(15, 'Mrs. Gia Tillman I', 'tromp.paula@gmail.com', '2025-02-16 20:52:19', '$2y$10$wWGsYqYRuSz08H8PMu4DU.RqNjtzQIS0HUirgazPcnSLQxuNje9Ci', 'tbylZiVY47', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '124 Herman Inlet Suite 906\nNorth Martyton, ND 83845-7441', '0439748985'),
+(16, 'Abelardo VonRueden', 'veum.donavon@gmail.com', '2025-02-16 20:52:19', '$2y$10$P4WXH.uc.4Ig3s4YfgfVeuXi1OP/l7GApMkXlwjChuhyEhTnnv73u', 'QuMtofBb82', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '104 Jermaine Inlet Suite 823\nWest Amira, NJ 14866', '0360011849'),
+(17, 'Montana Fahey', 'ehuels@gmail.com', '2025-02-16 20:52:19', '$2y$10$NdxUkGM7Qjh8JGABui0vg.FIlQ1a4oAdZiVQMyzP4.Cvzj/1b5l7e', 'lkCnfihwzs', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '17194 Melvina Fields Suite 440\nNovaberg, OH 73933', '0982509128'),
+(18, 'Nedra Boyer', 'gardner.veum@gmail.com', '2025-02-16 20:52:19', '$2y$10$/6S8sGLrP640laHf9JF2..I5JJSxYmFQc7nlPm2RF76wgT23HAaky', 'n1YwtU0n0x', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '42522 Ara Loaf Suite 118\nWest Tomasborough, WA 94537', '0715587630'),
+(19, 'Prof. Juliana Shanahan IV', 'ustoltenberg@gmail.com', '2025-02-16 20:52:19', '$2y$10$jtNLnXrCFSz3QfDMQ3J.se0vpTs4KhRgQNl5db/OQOHvS0PPF1p12', 'gvvHucxUE9', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '32930 Beahan Square Apt. 135\nEnochstad, CT 32602', '0228581085'),
+(20, 'Leatha Frami', 'reilly.emory@gmail.com', '2025-02-16 20:52:19', '$2y$10$lhIBlm7SEVs/tiSSEInuBeAgbhFiUH.7mLUoOnH6n9NCOwZgLGd.6', 'DBebjVqdNu', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '738 Alana Landing\nNew Brandyborough, WI 56046-1380', '0294675648'),
+(21, 'Jessica Wuckert', 'nader.princess@gmail.com', '2025-02-16 20:52:19', '$2y$10$fMrq60fIfenXxpEFkeEJiu5r.fqT0zyqr5erSxdK86YqXfiqGGNNi', 'FOKnkADk2e', '2025-02-16 20:52:19', '2025-02-16 20:52:19', 0, '179 Cassin Fort\nWest Nicola, CO 19444', '0559900493'),
+(22, 'Charity Sipes', 'zruecker@gmail.com', '2025-02-16 20:52:19', '$2y$10$yTpaXwMgpawD9Q.ROq5xTu96o/l/zxqJ6S6Y9vPD6rzTPI6tJ.HCS', 'SJQdcvgfNJ', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '3726 Bosco Parkways Apt. 204\nKiraberg, MA 23084', '0341105238'),
+(23, 'Nickolas Skiles', 'waters.margarita@gmail.com', '2025-02-16 20:52:20', '$2y$10$4WNkMJLXyBRpOrv8BcqgAOkDGkyzsrNmkb8RlLlYJy7lvzzmEoXse', 'G2C4Oo7OyI', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '42558 Hauck Plaza\nLake Kristy, GA 04052', '0433157636'),
+(24, 'Virgie Keebler DVM', 'paucek.annetta@gmail.com', '2025-02-16 20:52:20', '$2y$10$YzsTe8YveOd9vkcMhM1RnemlW3JOJ/I0zgUbpWco4KZezzh9dvD1S', 'E3HJYL7LHN', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '455 Felix Junctions Suite 110\nEast Kaylishire, AK 27771-9017', '0188676803'),
+(25, 'Dallas Ernser', 'khickle@gmail.com', '2025-02-16 20:52:20', '$2y$10$h6.YfCfMs5smmvTD18PUaOi65wkTr3Eqly0VcaHMfkNHcwm284n46', 'VCrHBG1Wwc', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '8293 Hoeger Trace Suite 584\nWizaside, NC 92807', '0249857976'),
+(26, 'Paris Waelchi', 'joyce74@gmail.com', '2025-02-16 20:52:20', '$2y$10$TdxN.RHkIJzDzQ/zJHhenO6ZDjwcgR9zje2YKpYQXsJjKuIeF1eWG', '0G9ZexBsHH', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '32876 Reynolds Prairie\nPort Anderson, IA 43332-7279', '0965137352'),
+(27, 'Raven Weissnat', 'padberg.pansy@gmail.com', '2025-02-16 20:52:20', '$2y$10$WsNvsVHxaelWkSMB8G/rmectZBi/Lx28lvgbjT8ivBQoggt1mVuRa', 'OZ2eqWg3gR', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '642 Fahey Skyway\nDedricberg, OR 68877', '0848607022'),
+(28, 'Miss Thea Kuphal', 'cleo53@gmail.com', '2025-02-16 20:52:20', '$2y$10$XENpch4Yj5LwC9ed8qDXAuMbwANW1cdaUrgO5vmnOKzirLCUa/.1.', 'ZW51Ke7B4W', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '52757 Harmon Track Apt. 401\nKylefort, AZ 95051-0102', '0891170986'),
+(29, 'Jaden Kertzmann', 'aratke@gmail.com', '2025-02-16 20:52:20', '$2y$10$ODwlGlcFqO6ztzE2F/DhleDAsSIXfSJYXCSAe0PyJBD7XSuEueT4S', 'JN2OszVzFR', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '500 Otilia Mill Apt. 215\nCletastad, MD 61094', '0929560614'),
+(30, 'Noemi Connelly', 'mueller.emmanuel@gmail.com', '2025-02-16 20:52:20', '$2y$10$v2c8ZgNjvU.cc8NGlMbAmeBihBffZuog5Do3KR2iP1U0OxgeEkMsm', '1cQSU4Wqdl', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '386 Orn Haven\nEast Morrisstad, ND 60421-2095', '0511042074'),
+(31, 'Rita Rodriguez', 'lenna03@gmail.com', '2025-02-16 20:52:20', '$2y$10$RyDprmeD1aX4CIgwjKJKi.Ui2LpgGXyne899SoJIkKwcpQ/i1xh.G', 'tDYrGlAUv3', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '277 Mitchell Extension Apt. 252\nChamplinberg, OR 50678', '0916035535'),
+(32, 'Retta Goodwin', 'kelton.aufderhar@gmail.com', '2025-02-16 20:52:20', '$2y$10$LgZ5g5rMs29vbmH6Qs/5Te3lik7dVSaFhil5QbCAIiodSreiCgje2', 'yvxaUoadih', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '75890 Tromp View Apt. 441\nWest Maryam, AR 89472', '0717233835'),
+(33, 'Prof. Candido Borer', 'hermina06@gmail.com', '2025-02-16 20:52:20', '$2y$10$E3UUaJGTNfusQOnQhcvt2eFgEghk/YWdwIVIGut/pWGS4273jPF7e', 'rJOAMOR8OE', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '636 Conroy Common\nWest Maymie, NJ 05385-0592', '0908837746'),
+(34, 'Dr. Kaleigh DuBuque V', 'cassie98@gmail.com', '2025-02-16 20:52:20', '$2y$10$BuEdU1Tluuj/eDBZSoRcIux7hOCRoSP0ORoVbSGEYXflnmKFeMQyK', 'Hi2E2dllKl', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '126 Walker Walk\nLake Sylvesterburgh, NC 50601-5136', '0425083318'),
+(35, 'Mr. Adrain Bergnaum', 'ealtenwerth@gmail.com', '2025-02-16 20:52:20', '$2y$10$QYiDxLsiMGi7SBvsakzpv.ODeJtRgJHD68A5X2fZJg8FmpQvpZAd6', 'umq6YmNYi8', '2025-02-16 20:52:20', '2025-02-16 20:52:20', 0, '1910 Pink Green Apt. 956\nNorth Mark, AK 77145', '0141988781'),
+(36, 'Laverne Gleason Sr.', 'gilda.swaniawski@gmail.com', '2025-02-16 20:52:20', '$2y$10$v.T6QcJkurGi4RiCHv0BEekSPtdqOr3oGjZKoSMe68b46x9QNnQjW', '4yyhG7UKCU', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '836 Walter Glen Apt. 225\nDenesikville, UT 75374-5794', '0515527711'),
+(37, 'Johnpaul Mann IV', 'velma.koepp@gmail.com', '2025-02-16 20:52:21', '$2y$10$7E1zMJyJbiiwvNjGZ.ebheXaMsJ.ydswlh8Q.l/C9Q2y2veKTlKpa', 'wnE1Qp8MMS', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '130 Clare Parkway\nWest Erinview, NY 01626-1057', '0736434191'),
+(38, 'Dr. Emmanuel Kub PhD', 'juwan.fadel@gmail.com', '2025-02-16 20:52:21', '$2y$10$H75pH64h8/1TXLG5W9266OoQHSYwoeQumgMESzpz1N/6s1.ShXtiO', 'EJ96bSWUjO', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '5821 Una Lake\nEast Willieview, OR 34025', '0916216725'),
+(39, 'Agustina Hartmann', 'bert21@gmail.com', '2025-02-16 20:52:21', '$2y$10$/Qpvwc3KdbeJVS8u99Ow6.M7YyTEolrc9TEkXemVltgkeCJoPpmqa', '8fK3rHg1Cv', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '73353 Hailee Rapid\nAufderharton, DC 22887', '0286309354'),
+(40, 'Prof. Kyleigh Mann', 'braxton12@gmail.com', '2025-02-16 20:52:21', '$2y$10$qLpQ35c0c/ZxXiXr4ybBAewa4yYC35Dq4WthUmwkbvKxMwt/Xfl9O', 'y1t7jfRT3y', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '2951 Wiza Neck\nAnabelland, KY 49386', '0356395937'),
+(41, 'Kyle Yundt', 'hickle.elna@gmail.com', '2025-02-16 20:52:21', '$2y$10$x4bxcFrA2yIUwWu0IuwdP.GLsZbCMDLJYYikV0hx9SEdXAs6Nuzxa', 'oOYN71vAkg', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '72446 Rolfson Cliffs Suite 081\nOrnmouth, DC 30160-2568', '0499671353'),
+(42, 'Enrique Lowe', 'armani65@gmail.com', '2025-02-16 20:52:21', '$2y$10$NDysmKj1RaD0Ib3bkrN7k.Jp1b.9oaFK/xX97b9pw1qq.yr9sLvl6', '8EM4AAfpg4', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '4188 Legros Common\nGuyfurt, SD 95418', '0327785568'),
+(43, 'Devonte Hodkiewicz', 'judah.doyle@gmail.com', '2025-02-16 20:52:21', '$2y$10$bxunHFh30xLz6BDlU1x4J.AEWT.1FA9tYbJoKy6vOVgq4cbRsRZuK', 'OwpRcYvIpG', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '9149 Predovic Loaf\nPort Laurelport, MT 07233-7566', '0363165298'),
+(44, 'Janiya Feeney', 'streich.armand@gmail.com', '2025-02-16 20:52:21', '$2y$10$1QkNeanI8R1Boa1pvj/OkuFZP5CHf/hXhLst9QxtQOo4h9t2MyzuO', 'MH0fNcK1e2', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '6990 Kemmer Cliff Suite 959\nPort Marcelton, SC 55752', '0804950768'),
+(45, 'Jalen Veum V', 'anabel.cormier@gmail.com', '2025-02-16 20:52:21', '$2y$10$RDTcmfZr6rryVQI4Jd..OOjjAFxedGeY5hwxsXg3cymaHNKgHOzs2', '3uBDNvsCES', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '64698 Mack Plain\nPort Sibylbury, WV 49460', '0527974569'),
+(46, 'Jakob Nitzsche', 'keyshawn.daugherty@gmail.com', '2025-02-16 20:52:21', '$2y$10$alMrlLa9VtFawEipCmpaEesjjt5IKBqHhg1VXszZGCo/2iWl.Jxi.', '3sWNo9olZL', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '22463 Mosciski Shores\nPurdyton, MO 59356', '0385921512'),
+(47, 'Velda Beier', 'ohettinger@gmail.com', '2025-02-16 20:52:21', '$2y$10$jhte8bR7bm1BLEPNzuGDOuuANv7B2SCrQGjnHuji1RAK0u23f45QC', 'I7Bo19BlgP', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '51790 Haag Centers Apt. 242\nPort Bettye, NM 25459-2849', '0191780656'),
+(48, 'Genevieve McDermott', 'mckenzie.emmalee@gmail.com', '2025-02-16 20:52:21', '$2y$10$Vb3rkXaRtJSiGxYndQzc0edaIeHJ2emV.Rs3IHezxIgZJSxL3geti', 'jk7LBFa3ny', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '1180 Randal Radial Suite 596\nWest Ashlynnland, AK 90343', '0750638123'),
+(49, 'Prof. Keanu Fahey DVM', 'cormier.noemi@gmail.com', '2025-02-16 20:52:21', '$2y$10$/yCL0QiIF.u3CMvcGgrYeubFEM/qnl/NgCky2k4ZC5W3btpy..y/6', 'SxEjIJ5YD1', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '6671 Destiney Grove Apt. 595\nMarcellustown, TN 10470', '0881195254'),
+(50, 'Ms. Sabryna Schulist', 'keanu.stamm@gmail.com', '2025-02-16 20:52:21', '$2y$10$Wy9RKIitd8QjRgJjrhL31O1gboepCfmt2klaaD.6lqyTDDEk6fGwC', 'f1Tq1X9sHi', '2025-02-16 20:52:21', '2025-02-16 20:52:21', 0, '5112 Jakob Crescent Apt. 205\nO\'Keefeburgh, NE 51381-7553', '0747723349'),
+(51, 'Prof. Edmund Kreiger', 'yasmeen58@gmail.com', '2025-02-16 20:52:21', '$2y$10$5syFarmQeJh.koRF9zSCuODcvlRaF07zihIHfDqqE9Y4nVbzKcNjm', 'LNP4nM1LVK', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '5342 Haven Shores Suite 266\nPort Norwoodshire, HI 21783', '0708767435'),
+(52, 'Earl Krajcik', 'faustino41@gmail.com', '2025-02-16 20:52:22', '$2y$10$IBKuXVIS44vmpf0u1OXfQOEXw/Enr4kf9ijgPVHB87.bQp3LyKMVS', '5RBupU5pa3', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '2689 Beatty Ferry\nJaysonshire, WA 02787-2600', '0544561847'),
+(53, 'Zena Baumbach', 'blanda.sheridan@gmail.com', '2025-02-16 20:52:22', '$2y$10$hs.rwoF3opqLNXYSljuwtuGe0FSP1Rw3WaCjQ84TzdjlhKnRZRb7e', 'LxWq9CkBKU', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '8186 Nienow Drive Suite 427\nRatkeville, KY 98647-8261', '0657149814'),
+(54, 'Kattie Deckow', 'tolson@gmail.com', '2025-02-16 20:52:22', '$2y$10$2EuB4hYOlJrW2MPNuHwuk.lZgt7I2a0a6JZ1Wwq2K1mc9MUsT6Jxi', 'kbmCiygojZ', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '861 Walter Underpass Suite 464\nKuphalmouth, TN 54170-0042', '0330587373'),
+(55, 'Eve Daugherty', 'sernser@gmail.com', '2025-02-16 20:52:22', '$2y$10$E0Ht0e9.S4Jqwn881R7zP.gG5UgWUHlcWVlLyMh9P3hCtixKZc7pm', 'gspUJJjyAq', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '27529 Wisozk Causeway\nNorth Patriciafort, AZ 05753-3786', '0273188295'),
+(56, 'Keegan Kiehn Sr.', 'sporer.elian@gmail.com', '2025-02-16 20:52:22', '$2y$10$EAktxtqkHl13viUihS95HuNPCyOd.CMf7X3IlILyzICm03Q.xXU..', 'rO82zLFW3B', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '22566 Talon Street\nDanborough, SC 68652', '0495965353'),
+(57, 'Eliseo Hill II', 'becker.marcelle@gmail.com', '2025-02-16 20:52:22', '$2y$10$JiTKyMCTv2Vx3f06TUQvxeb8cJSx1Z794/EM4AiAe0BwuJxTSFXQa', 'KFkNZCNWbh', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '128 Ryan Burg\nHenriville, NM 49633-4482', '0659294994'),
+(58, 'Christiana Hoppe', 'kjacobi@gmail.com', '2025-02-16 20:52:22', '$2y$10$gbjq2iFqTHDzvPXl8zhmOOZFQcY5USEs5PihRbZhpJ0pgGiciUz7S', 'IEjUDcd0t8', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '729 Carroll Terrace Apt. 727\nVanceburgh, NH 80567-2906', '0920419305'),
+(59, 'Mr. Mikel Jerde DVM', 'nreichert@gmail.com', '2025-02-16 20:52:22', '$2y$10$nWuy2UVL7arvesZnME8LcOm5f7nayCbSkxFYDeDZ7dHoa7c8lKzIS', 'EPJiqxBGcB', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '31056 Schuyler Inlet Apt. 701\nHeidiside, GA 14642-3712', '0734840855'),
+(60, 'Myrl Kuvalis Sr.', 'mstamm@gmail.com', '2025-02-16 20:52:22', '$2y$10$xZWsKa5F1oIIiz8Ev2B9U.q651eZ5oz0ZVGPMfWEEGu/DKdp0z2By', 'POXncsAYsn', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '6428 Marge Trafficway\nLorenzamouth, NY 83281-6258', '0897188877'),
+(61, 'Travon Botsford', 'rwaters@gmail.com', '2025-02-16 20:52:22', '$2y$10$.GtQqay.ZNdvu/BlWdf1Bu9VPqmdoEy4c1xaU5lEHhnj14HzdeBva', 'JaM6uzjsvB', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '628 Crooks Cape Suite 457\nNew Alysaville, WA 17646', '0928875934'),
+(62, 'Prof. Liana Cronin II', 'dave.schmitt@gmail.com', '2025-02-16 20:52:22', '$2y$10$DSHXmaCItAq/Bzcop0D77eXnWiBInxn/WsytEHO2hz0cFr2r2GOW6', '9EnOgCWxly', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '89426 Rachael Meadow Apt. 755\nPort Asha, WY 22475-4497', '0867227522'),
+(63, 'Dr. Buster Daniel IV', 'dahlia41@gmail.com', '2025-02-16 20:52:22', '$2y$10$gdAKfVKmlKKmcsoRr9xmauHSqybg.2D5D8mW3oXAxUvcNbzXIgy8m', 'o8XEEKR879', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '94709 Estevan Vista\nSouth Vince, LA 13272-0095', '0400436605'),
+(64, 'Ms. Alize Donnelly', 'sharon.spinka@gmail.com', '2025-02-16 20:52:22', '$2y$10$z29PD6mAT4NJY0LAGd0eReM8tWhmCTbC5VcXOv47hj7at0v9sCzOq', 'VQEG2ttG28', '2025-02-16 20:52:22', '2025-02-16 20:52:22', 0, '559 Reichel Cove\nWest Don, CA 07449-7506', '0604045824'),
+(65, 'Dr. Rhiannon Wiegand MD', 'heathcote.mackenzie@gmail.com', '2025-02-16 20:52:22', '$2y$10$xwsS0WGx16hVk33f0YN0Fu9WilTjTEE/9EA/G4.rcXABxNHURzPqa', 'pC6DqQj2fB', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '18437 Reilly Roads Apt. 743\nLake Karenshire, GA 50581', '0834371284'),
+(66, 'Alek Hettinger', 'gkuhn@gmail.com', '2025-02-16 20:52:23', '$2y$10$D9ntIX9jFjtZ6gZ2lme6cOaiN9u4NNb3RtH2QqkhndZcKkZxmCkMi', 'DLjIMiEnEp', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '318 O\'Connell Run\nNorth Pascaleton, AK 52936', '0476796861'),
+(67, 'Autumn Ankunding', 'dkuphal@gmail.com', '2025-02-16 20:52:23', '$2y$10$UAKY3tscUKxCRiUncFc0aud84/J./CJdZxFaXF6XE4ENGp3XaDiX2', '1OmO8PMJXB', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '13847 Stuart Track Apt. 737\nGiovaniburgh, AK 21755-3962', '0366118720'),
+(68, 'Dr. Verna Wiegand IV', 'maurice81@gmail.com', '2025-02-16 20:52:23', '$2y$10$3OLGOGAkfWyar8G7j1AOtel4P6ktwpa7hFOkAsrTgH0kLQ0JzuzKe', 'M1YiSXKgxe', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '44412 Mckenna Estates\nSusiehaven, MI 60817', '0858593931'),
+(69, 'Adeline Konopelski', 'eden14@gmail.com', '2025-02-16 20:52:23', '$2y$10$hQXxZJOVZXmhclsEcnwqx.MfbLO5fe/R2qTEziyhyBjNsdzwdytcq', 'dKrBw7fflB', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '195 Magali Lodge Suite 687\nPort Herminiofurt, AL 10976-6661', '0594666851'),
+(70, 'Sienna Kilback', 'parker.grayson@gmail.com', '2025-02-16 20:52:23', '$2y$10$fmfjUO053nGi5i37yzt4De9OBPQk6WUthUT6yXPmLEtrpCDs3xga6', 'h1gAnXTdZe', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '1445 Unique Divide\nLake Marguerite, FL 21885-8246', '0968070213'),
+(71, 'Frida Okuneva', 'zulauf.kellie@gmail.com', '2025-02-16 20:52:23', '$2y$10$KF7FWJmRwe6L6/DMwPTnx.ZFjpmOlT1/Wb6jh48ovlbvGpfRIkVuC', '8h4Nlpr78e', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '311 Schmitt Mountain Apt. 242\nVenashire, UT 39543', '0579868193'),
+(72, 'Laron Parker', 'forrest.lemke@gmail.com', '2025-02-16 20:52:23', '$2y$10$xG4/6uIK5aau95Jsisgid.3uwW3mmvwTnJ16rtYNWyf6vb51.hYqO', 'dGvuU7q4IQ', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '7187 Rowe Island\nSouth Ginotown, WV 03861-8614', '0179855090'),
+(73, 'Armani Marquardt', 'devonte58@gmail.com', '2025-02-16 20:52:23', '$2y$10$Ix/zZJzEpDypqMnpQivqme5rj6/0T7RDuQBUjzcnz4q4Ltr.OdXCS', 'nUQO5i9QHb', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '4999 Monahan Landing Apt. 802\nLangoshside, WA 09532-3622', '0507333954'),
+(74, 'Kyra Larson II', 'israel36@gmail.com', '2025-02-16 20:52:23', '$2y$10$Wf6JUCdtdHhea.kK28YjeefbrPE6wlCT2bgHmBd7a9RUY5yu6uRVq', 'sLBZFqyvE9', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '664 Kendra Roads Suite 885\nWest Abelardo, NJ 81639-4090', '0164725247'),
+(75, 'Mateo Windler', 'gmitchell@gmail.com', '2025-02-16 20:52:23', '$2y$10$jWkILyrXcdOROk60z//mPeSzdJf1WKauLXG643W3uzKQRsfLON81K', 'xosPDiCgrV', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '495 Donnelly Ramp\nLake Tyrelburgh, MI 27890', '0575482307'),
+(76, 'Randal Bins', 'alexandria35@gmail.com', '2025-02-16 20:52:23', '$2y$10$25ggyX9VChVPSMXN7ySpJeSYV.70OC7fTMsJltcos4qKJqD2RuB9a', 'XCvaqjDE19', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '7267 Turcotte Run\nWest Peytonbury, NJ 01312', '0372766048'),
+(77, 'Jesse McGlynn', 'lenora.bode@gmail.com', '2025-02-16 20:52:23', '$2y$10$8Yxlg3mY2ZWEmIxZtThdoOkY7UU.MmYDr1b8Cdv37aeViFPEjGyuK', 'RcYre3ehRK', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '7412 Delilah Ports\nNorth Maxiechester, PA 79842', '0181980856'),
+(78, 'Tom Adams', 'cole.mandy@gmail.com', '2025-02-16 20:52:23', '$2y$10$K0tAJHOWcgathYLyibKJc.6rsFd15IdamLfgVX5w2MEmiYR/4GOAm', 'fuJ1T1jsZj', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '9005 Treutel Roads\nNew Samantafurt, KY 19139-1693', '0717344784'),
+(79, 'Mrs. Alberta Dickinson', 'koch.dario@gmail.com', '2025-02-16 20:52:23', '$2y$10$toWvi8tmXaF8/Q0xRbgMgOW7Ha.rkfyHJ3l6x48Y34LW/9b4VoODO', '106ynX9tVI', '2025-02-16 20:52:23', '2025-02-16 20:52:23', 0, '20052 Shanahan Harbors Suite 986\nBrentside, NV 91737', '0553782787'),
+(80, 'Letitia Goldner', 'qabshire@gmail.com', '2025-02-16 20:52:23', '$2y$10$vF67g0.mmDom2bxSQLn15eg.xngI/Imwdump1wHM0JEbP4iW5Jsh2', 'zqU2ZsycIV', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '785 Guadalupe Views Suite 553\nBridgettehaven, WI 25926', '0586025804'),
+(81, 'Roslyn Schoen', 'else.ohara@gmail.com', '2025-02-16 20:52:24', '$2y$10$ftXHmb1cpLN2AdnsvmWKo.DdE3hGJLJ.6SihDLjVf5oBeOPjggkZy', 'abbpPAtzs2', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '2543 Mario Unions Apt. 583\nKennithmouth, NJ 00182', '0146097103'),
+(82, 'Randy Hirthe', 'mleffler@gmail.com', '2025-02-16 20:52:24', '$2y$10$EIML87toXPd1zxeC5dzAWOAfzGibqpCdDo8S7/npfND0pDAvycyMC', 'HIdWvCxZgO', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '3978 Evie Street\nWest Erna, RI 92501', '0884403806'),
+(83, 'Ian Carroll', 'ocarroll@gmail.com', '2025-02-16 20:52:24', '$2y$10$BDHSKOKWQWFecWDcRpq/6OBfYpdf4NMQt3ocKfZEA71.5a5kJF4j6', 'fEjMwKcGJt', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '85031 Rowe Mountains\nLarsonmouth, NY 00374-3414', '0928371578'),
+(84, 'Prof. Annetta Kerluke IV', 'guadalupe.glover@gmail.com', '2025-02-16 20:52:24', '$2y$10$M8OtV8ZDN35oezqTBUZJrugu69H1ddeOHhPM2iJMxe6wYyKzzqKNi', 'qn3k8jy1uO', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '79682 Jakubowski Lane Suite 240\nWeimannborough, MI 63680-2847', '0330910408'),
+(85, 'Chris Sawayn II', 'jerde.janessa@gmail.com', '2025-02-16 20:52:24', '$2y$10$dnwwPHLQRFiiBF7ec18u9uuodrkNHpk1oy2kzTUhKi4ZJqCvEiVeO', 'KUTCyGltix', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '58464 Wiza Neck Apt. 106\nEast Pearlineside, OH 57517-2327', '0349148948'),
+(86, 'Calista Bashirian', 'joana84@gmail.com', '2025-02-16 20:52:24', '$2y$10$uXYZX7LXnAXTiejlNNO24uKFH72W7b86OQgLYVn3E5HMry0a49wTe', 'Nb3NpQe4jQ', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '11362 Roberts Streets Apt. 172\nEast Adalinehaven, MN 52873-7909', '0869529444'),
+(87, 'Viviane Bruen', 'nakia66@gmail.com', '2025-02-16 20:52:24', '$2y$10$ICslFy4hT6GnkTm7d5.hEOPeqVx.bofK3UPJCNMiy/ylA324Ds7Mu', 'vWGDyf0cG0', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '7838 Lindsey Freeway Suite 429\nGregoriaport, HI 30944', '0355755036'),
+(88, 'Athena Auer', 'cruickshank.alphonso@gmail.com', '2025-02-16 20:52:24', '$2y$10$zjAaA14E3wZCTyqx5USeEOvXV2aBJFzNhqVRagdnn2Zsl5PZ444Xi', 'UqxqbeHJMB', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '23899 Frederique Plaza\nWest Jordi, MS 01309', '0239315089'),
+(89, 'Lia Keeling', 'fleta32@gmail.com', '2025-02-16 20:52:24', '$2y$10$YElbXM0wePUtG9W/argnuO7umUiziHP2l0eawt0lkUx9DAFKqRZXy', 'RlwEq20ypx', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '65875 Corkery Summit Apt. 772\nHarberchester, WI 70039', '0231422224'),
+(90, 'Kristopher Grimes', 'zlittle@gmail.com', '2025-02-16 20:52:24', '$2y$10$UJAn56qR3cBzNzeX3kjzv.5K3wBSM5B77wkRGogHRcI.DdIISwZyq', 'pKnDYkj5eD', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '280 Logan Hill Suite 703\nNew Huntermouth, SC 43248', '0310275652'),
+(91, 'Domingo Fay', 'qlang@gmail.com', '2025-02-16 20:52:24', '$2y$10$sgyFrkskklQRbVdwI7qf2.v7I56ubB2o.Rk7cXtaeZqjsT7tI8Kky', 'RqbSgWawb0', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '5333 Westley Viaduct\nNorth Jada, IL 43400-2357', '0304525412'),
+(92, 'Walter Ortiz', 'ramona49@gmail.com', '2025-02-16 20:52:24', '$2y$10$EWrUa9c8prX6Ius2RPv95OIAnklfiR890H0zIkJXs.5fR21DPJ0Km', 'rt42qW1rHN', '2025-02-16 20:52:24', '2025-02-16 20:52:24', 0, '433 Laury Bridge\nLake Huntertown, WV 70219-7577', '0725836866'),
+(93, 'Landen Schultz', 'alexander.reichel@gmail.com', '2025-02-16 20:52:24', '$2y$10$r5mHr6e0pFKbgixS9vMaLOfPOBSjS0RhTsBTHUk0eCdRK6MTn9gPq', 'owrqume1Go', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '20471 Greenholt Expressway\nConnborough, NE 24688', '0774127818'),
+(94, 'Cyrus Hickle MD', 'fpaucek@gmail.com', '2025-02-16 20:52:25', '$2y$10$rmS4e3SIrBviOqtC8hIsEeBtKXQpBHYYkzaJDgPVZ0sMDXlNwoaGW', 'DvW8mHj9fK', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '26365 D\'angelo Flat\nSchulistton, MA 80967-5652', '0639176519'),
+(95, 'Karley Murray II', 'corkery.henri@gmail.com', '2025-02-16 20:52:25', '$2y$10$yzAx21n.FNvF3q0Qn1XXoeBXwMXdtRg0oi0dSaQRfGbR0iWXhx4aO', '2vkfUKSwq0', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '214 Katherine Flat Suite 830\nNorth Felicity, MS 77436-1507', '0683092055'),
+(96, 'Maud Douglas PhD', 'leslie22@gmail.com', '2025-02-16 20:52:25', '$2y$10$Nw03aiUHokVkRlh/X1s9d.1UnSs6uT3vVR3fLWmQLJUm0GaLamvUu', 'Pw8NPcW6Hx', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '4304 Karlee Fall Apt. 720\nLavonburgh, CA 29407-5942', '0393164128'),
+(97, 'Mikel Zemlak', 'genesis88@gmail.com', '2025-02-16 20:52:25', '$2y$10$oa4XwHSQyEW5Iu8REXFZOutGoOG0/fjuCnmmpR2ZH3k0qAHsE1AKi', '6rbQXfqp1Q', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '49431 Gladys Views Suite 699\nLuciobury, SC 63665-4324', '0580069332'),
+(98, 'Margarete Hauck', 'keyshawn.okon@gmail.com', '2025-02-16 20:52:25', '$2y$10$weSab5pyVrWtTSkI4w3XxOydtPFtLFKIcSAEQ4WpTn0BEVuz8RV9O', 'vf2bVwKjqD', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '6137 Wyman Field Apt. 700\nWest Daisha, MD 92924-3949', '0614250218'),
+(99, 'Kari Kiehn', 'kristopher.hilpert@gmail.com', '2025-02-16 20:52:25', '$2y$10$Knlry6lSSdeCm6sMk0Mhiewt.p6U7uPMSNtlaE.0I4rbm9zJOvJOq', 'N5rdb4YxQC', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '82048 Dameon Court\nNorth Johathan, TX 38960', '0847822507'),
+(100, 'Mr. Garland Denesik', 'alan46@gmail.com', '2025-02-16 20:52:25', '$2y$10$wASUIoGFrukuK.skY9anKeAqdqIujJxaXJy6C2pU1emkc3yHeYntK', 'OaB5uKijun', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '5448 Parisian Bridge Apt. 300\nBennyfort, DE 48465', '0750560832'),
+(101, 'Cleta Mohr', 'sschuster@gmail.com', '2025-02-16 20:52:25', '$2y$10$J/KFOojjKFvyCoGVmlzCrebOIM9wtEOJgL6fxljp3WC0DA/3u1CDq', 'ROMP03qfAD', '2025-02-16 20:52:25', '2025-02-16 20:52:25', 0, '6176 Christiansen Forge\nNew Rico, CO 83261-3625', '0940500018'),
+(102, 'adminre@gmail.com', 'adminre@gmail.com', '2025-04-08 10:21:48', '$2y$10$zOFJl6ajzQAByvZI44V.QuDcvhaza9Egm24KL3z/rKIJoc4ZgjB2C', '9n57df0yyQwmbw8OYmWVZn2x3pW6SdsX7njSk0io', '2025-04-08 10:21:48', '2025-04-08 10:21:48', 0, 'hai muong thanh', '12365485');
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `admins_email_unique` (`email`);
+
+--
+-- Chỉ mục cho bảng `brands`
+--
+ALTER TABLE `brands`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `cart_item`
+--
+ALTER TABLE `cart_item`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cart_item_shopping_session_id_foreign` (`shopping_session_id`),
+  ADD KEY `cart_item_product_id_foreign` (`product_id`);
+
+--
+-- Chỉ mục cho bảng `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Chỉ mục cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_details_user_id_foreign` (`user_id`);
+
+--
+-- Chỉ mục cho bảng `order_items`
+--
+ALTER TABLE `order_items`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_items_order_id_foreign` (`order_id`),
+  ADD KEY `order_items_product_id_foreign` (`product_id`);
+
+--
+-- Chỉ mục cho bảng `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Chỉ mục cho bảng `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
+  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+
+--
+-- Chỉ mục cho bảng `products`
+--
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `products_brand_id_foreign` (`brand_id`);
+
+--
+-- Chỉ mục cho bảng `shopping_session`
+--
+ALTER TABLE `shopping_session`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `shopping_session_user_id_foreign` (`user_id`);
+
+--
+-- Chỉ mục cho bảng `subscribers`
+--
+ALTER TABLE `subscribers`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `subscribers_email_unique` (`email`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_phone_unique` (`phone`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `admins`
+--
+ALTER TABLE `admins`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `brands`
+--
+ALTER TABLE `brands`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `cart_item`
+--
+ALTER TABLE `cart_item`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT cho bảng `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT cho bảng `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `order_items`
+--
+ALTER TABLE `order_items`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT cho bảng `personal_access_tokens`
+--
+ALTER TABLE `personal_access_tokens`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `products`
+--
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT cho bảng `shopping_session`
+--
+ALTER TABLE `shopping_session`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+
+--
+-- AUTO_INCREMENT cho bảng `subscribers`
+--
+ALTER TABLE `subscribers`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `cart_item`
+--
+ALTER TABLE `cart_item`
+  ADD CONSTRAINT `cart_item_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `cart_item_shopping_session_id_foreign` FOREIGN KEY (`shopping_session_id`) REFERENCES `shopping_session` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `order_details_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `order_items`
+--
+ALTER TABLE `order_items`
+  ADD CONSTRAINT `order_items_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `order_details` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `order_items_product_id_foreign` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `products`
+--
+ALTER TABLE `products`
+  ADD CONSTRAINT `products_brand_id_foreign` FOREIGN KEY (`brand_id`) REFERENCES `brands` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `shopping_session`
+--
+ALTER TABLE `shopping_session`
+  ADD CONSTRAINT `shopping_session_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
